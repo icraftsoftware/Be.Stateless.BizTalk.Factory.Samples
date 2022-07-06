@@ -28,6 +28,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Org.Anization.Accounting.Sc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Org.Anization.Accounting.Schemas.Tests", "src\Org.Anization.Accounting.Schemas.Tests\Org.Anization.Accounting.Schemas.Tests.csproj", "{05CF6B15-7371-4B61-B30D-2FADB4F040D1}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Org.Anization.BizTalk.Environment.Settings", "src\Org.Anization.BizTalk.Environment.Settings\Org.Anization.BizTalk.Environment.Settings.csproj", "{2AB46431-532E-4469-B14E-6155C01E1C96}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Org.Anization.BizTalk.Environment.Settings.Tests", "src\Org.Anization.BizTalk.Environment.Settings.Tests\Org.Anization.BizTalk.Environment.Settings.Tests.csproj", "{8C97365F-3E05-44A5-9C85-860E62330BF5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -74,6 +78,14 @@ Global
 		{05CF6B15-7371-4B61-B30D-2FADB4F040D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05CF6B15-7371-4B61-B30D-2FADB4F040D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05CF6B15-7371-4B61-B30D-2FADB4F040D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AB46431-532E-4469-B14E-6155C01E1C96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AB46431-532E-4469-B14E-6155C01E1C96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AB46431-532E-4469-B14E-6155C01E1C96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AB46431-532E-4469-B14E-6155C01E1C96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C97365F-3E05-44A5-9C85-860E62330BF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C97365F-3E05-44A5-9C85-860E62330BF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C97365F-3E05-44A5-9C85-860E62330BF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C97365F-3E05-44A5-9C85-860E62330BF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

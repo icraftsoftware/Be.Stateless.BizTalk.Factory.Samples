@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2021 François Chabot
+// Copyright © 2012 - 2022 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -55,7 +55,7 @@ namespace Org.Anization.Accounting
 													d => {
 														d.AllowUnrecognizedMessage = true;
 														d.RecoverableInterchangeProcessing = true;
-														d.DocumentSpecNames = new SchemaList() {
+														d.DocumentSpecNames = new SchemaList {
 															new SchemaWithNone(SchemaMetadata.For<Any>().DocumentSpec.DocSpecStrongName)
 														};
 													})
@@ -66,12 +66,44 @@ namespace Org.Anization.Accounting
 														};
 													});
 										});
+									// ReSharper disable once StringLiteralTypo
 									rl.Transport.Adapter = new FileAdapter.Inbound(a => { a.ReceiveFolder = @"c:\file\billing\credits"; });
 									rl.Transport.Host = "BizTalkServerApplication";
 								})
 						);
 					}),
 				new EvilBankReceivePort()
+			);
+
+			SendPorts.Add(
+				SendPort(
+					sp => {
+						sp.Name = "Embezzlement Send Port";
+						sp.SendPipeline = new SendPipeline<FFTransmit>(
+							p => {
+								p.PreAssembler<MicroPipelineComponent>(
+										c => {
+											c.Components = new IMicroComponent[] {
+												new XsltRunner { MapType = typeof(string) }
+											};
+										})
+									.Assembler<FFAsmComp>(
+										c => {
+											c.HeaderSpecName = new SchemaWithNone(SchemaMetadata.For<Any>().DocumentSpec.DocSpecStrongName);
+											c.DocumentSpecName = new SchemaWithNone(SchemaMetadata.For<Any>().DocumentSpec.DocSpecStrongName);
+											c.TrailerSpecName = new SchemaWithNone(SchemaMetadata.For<Any>().DocumentSpec.DocSpecStrongName);
+										})
+									.Encoder<MicroPipelineComponent>(
+										c => {
+											c.Components = new IMicroComponent[] {
+												new ContextBuilder { BuilderType = typeof(int) }
+											};
+										});
+							});
+						sp.Transport.Adapter = new FileAdapter.Outbound(a => { a.DestinationFolder = @"c:\file\embezzlement"; });
+						sp.Transport.Host = "BizTalkServerApplication";
+					}),
+				new TaxEvadingShellCompanySendPort()
 			);
 		}
 	}
